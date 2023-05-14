@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800&display=swap')
+
+// Базовые настройки переменных, mixin, grid сетка всего сайта, container и body 
+
+@mixin respond($breackpoint)
+    @if $breackpoint == phone
+        @media only screen and (max-width: 420px)
+            @content
+    @if $breackpoint == tab-port
+        @media only screen and (max-width:830px)
+            @content
+    @if $breackpoint == tab-land
+        @media only screen and (max-width: 1170px)
+            @content
+    @if $breackpoint == big-screen
+        @media only screen and (min-width: 1800px)
+            @content
+// Основные цвета сайта
+$color-green-dark: #425844
+$color-green-light: #61A568
+
+$color-blue-dark: #101D2C
+
+$color-gray-dark: #AAAAAA
+$color-gray-light: #F5F5F5
+html
+    font-size: 62.5%
+// Font-size: 10px
+
+html
+    font-size: 62.5%
+    @include respond(tab-land)
+        font-size: 50%
+    @include respond(tab-land)
+        font-size: 40%
+
+body
+    font-family: "Montserrat", sans-serif
+    font-weight: 400
+    color: $color-gray-light
+    font-size: 1.6rem
+    background-color: $color-gray-light
+.container
+    margin: 0 auto
+    display: grid
+    grid-template-rows: 80vh min-content 40vw min-content repeat(3, min-content)
+    grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [content-start] repeat(8, [col-start]minmax(min-content, 14rem)[col-end] ) [center-end] minmax(6rem, 1fr) [full-end]
+
+    @include respond(tab-land)
+        grid-template-rows: 6rem 80vh min-content 40vw min-content repeat(3, min-content)
+        grid-template-columns: [full-start] minmax(6rem, 1fr) [content-start] repeat(8, [col-start]minmax(min-content, 14rem)[col-end] ) [center-end] minmax(6rem, 1fr) [full-end]
+    @include respond(tab-port)
+        grid-template-rows: 6rem calc( 100vh - 6rem ) min-content min-content repeat(3, min-content)

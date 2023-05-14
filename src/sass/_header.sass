@@ -1,0 +1,44 @@
+.header
+    background: url("../img/header-bg.svg") no-repeat center/cover
+    padding: 5rem
+    background-color: $color-blue-dark
+    grid-column: full-start/col-end 6
+    display: grid
+    grid-template-rows: 1fr min-content minmax(10rem, min-content) 1fr
+    @include respond(tab-port)
+        grid-column: full-start/-1
+        grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr
+    &__img img
+        height: 2.5rem
+    &__btn
+        justify-self: start
+        align-self: start 
+    &-line__text
+        text-align: center
+        font-weight: 700
+        font-size: 1.6rem
+        line-height: 2rem
+        color:$color-gray-dark
+        margin-bottom: 1rem
+        display: grid
+        grid-template-columns: 1fr max-content 1fr
+        gap: 0 2rem
+        align-items: center
+        &::before, &::after
+            content: ""
+            height: 0.1rem
+            display: block
+            background: $color-gray-dark
+    &__img
+        display: grid
+        grid-template-columns: repeat(4, auto)
+        justify-items: center
+        grid-gap: 2rem
+        @include respond(tab-port)
+            grid-gap: 1rem
+.logo
+    display: block
+    margin-bottom: 8rem
+    &__img
+        display: block
+        margin: 0 auto
